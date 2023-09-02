@@ -1,3 +1,5 @@
+
+import { useState } from "react";
 import PokemonList from "../PokemonList/PokemonList";
 import Search from "../Search/Search";
 
@@ -6,11 +8,15 @@ import Search from "../Search/Search";
 import './Pokedex.css';
 
 function Pokedex(){
+    const [searchTerm,setSearchterm] = useState('');
+    useEffect(()=>{
+
+    },[searchTerm])
     return(
         <div className="pokedex-wrapper">
-        
-        <Search />
-     <PokemonList/>
+        <Search updateSearchTerm ={setSearchterm}/>
+        {searchTerm}
+     {(!searchTerm)?<PokemonList/>:<pokemonDetails key={searchTerm} pokemonName={searchTerm}/>}
 
 
 
